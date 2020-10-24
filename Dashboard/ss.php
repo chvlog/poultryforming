@@ -1,0 +1,140 @@
+<?php  
+  
+ session_start();  
+ if(!isset($_SESSION["username"]))  
+ {  
+      header("location:login.php?action=login");  
+ }  
+ ?>  
+
+
+
+<?php
+include("connection.php");
+
+
+?>
+<head>
+ 
+<style>
+  
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+<?php require_once('vip/top.php')?>
+  
+
+
+
+<div class="row" style="background-color:; width:1280px;">
+
+
+    <div  class="col-md-4 offset-1 " >
+<h1>Update Record</h1>
+ <form id="form" action="" method="GET">
+
+<input type="text" placeholder ="Buyer Name" name="order_customer_name"  value="<?php echo $_GET['order_customer_name']; ?>" />
+ <br>
+ <br>
+ <input type="text"  placeholder="Saled Chicken" name="order_item" value="<?php echo $_GET['order_item']; ?>" / >
+ <br>
+ <br>
+ <input type="text"  placeholder="Loss Chicken Price" name="loss" value="<?php echo $_GET['loss']; ?>" / >
+ <br>
+ <br>
+ <input type="text"  placeholder="Selling_Price" name="order_value" value="<?php echo $_GET['order_value']; ?>"/ >
+  <br>
+ <br>
+ <input type="text"  placeholder="wight" name="wight" value="<?php echo $_GET['wight']; ?>"/ >
+  <br>
+ 
+ <br>
+  
+  <input type="submit" value="update" name="submit"> 
+          </form>
+
+
+
+
+
+
+
+
+
+
+<?php
+include("connection.php");
+error_reporting(0);
+ $_GET['order_customer_name'];
+ $_GET['order_item'];
+
+  $_GET['loss'];
+  $_GET['order_value'];
+ $_GET['price'];
+ $_GET['wight'];
+
+
+?>
+
+
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+ 
+
+  <?php
+       
+         {
+       if($_GET['submit'])
+        $order_customer_name =$_GET['order_customer_name'];
+        $order_item =$_GET['order_item'];
+        $loss=$_GET['loss'];
+         $order_value=$_GET['order_value'];
+        $price =$_GET['price'];
+        $wight =$_GET['wight'];
+       
+
+
+        $query="UPDATE selling SET ORDER_CUSTOMER_NAME='$order_customer_name' , ORDER_ITEM='$order_item' ,LOSS='$loss' ,ORDER_VALUE='$order_value' ,WIGHT='$wight' WHERE ORDER_CUSTOMER_NAME='$order_customer_name' ";
+             
+
+           
+          // $query="UPDATE  lossprofit SET LOSSNUM='$lossnum' , PRICE='$price' ,DATE='$date'  ";
+
+        $run=mysqli_query($conn,$query);
+
+        if($run){
+
+                      echo "Successfull. <a href='s.php'>click here</a>";
+
+
+
+
+        }
+        else{
+
+                 echo "not successfull";
+
+        }
+    
+     }
+        ?>
+
+
+
+</div>
+
+</div>
+
+
+</body>
+</html>
